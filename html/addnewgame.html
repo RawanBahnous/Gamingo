@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamingo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      crossorigin="anonymous"
+      media="all"
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+  </head>
+  <body>
+    <div class="col-nav">
+      <nav>
+        <ul>
+          <h2>
+           <i class="fa-solid fa-dice-d20" style="color: #ffffff;"></i>
+            Gamingo
+          </h2>
+          <li>
+            <a href="adminhome.html" style="margin-top: 80px">
+             <i class="fa-solid fa-house" style="color: #fafcff;"></i>
+              Home</a
+            >
+          </li>
+          <li>
+            <a href="">
+              <i class="fa-solid fa-chess-board" style="color: #fafcff;"></i>
+              Games List</a
+            >
+          </li>
+          <li>
+            <a href="">
+              <i class="fa-regular fa-rectangle-list" style="color: #e3e7ee;"></i>
+              Types</a
+            >
+          </li>
+
+          <li>
+            <a href="">
+              <i class="fa-solid fa-arrow-right-from-bracket" style="color: #f0f2f5;"></i>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      
+
+      <div class="popup-overlay-game">
+        <div class="popup-content-game">
+          <h2>Add New Game</h2>
+          <form id="gameForm">
+            <div class="form-group">
+            <label for="Gamename">Gamename:</label>
+            <input type="text" id="Gamename"  placeholder="Gamename">
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="desc">Description:</label>
+            <input type="text" id="desc" placeholder="Description" required>
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="Type">Type:</label>
+            <input type="text" id="Type" placeholder="Type" required>
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="price">price:</label>
+            <input type="number" id="price" placeholder="price" required>
+            </div>
+            <br>
+            <button type="submit" onclick="addGame()">Add</button>
+          </form>
+          <!-- <span class="close-popup-game">&times;</span> -->
+        </div>
+      </div>
+      
+      
+    </main>
+
+    <script src="../js/js.js"></script>
+    <script>
+      function addGame() {
+        const gamname = document.getElementById("Gamename");
+        const desc = document.getElementById("desc");
+        const Type = document.getElementById("Type");
+        const price = document.getElementById("price");
+        const gameValu = gamname.value.trim();
+        const descValu = desc.value.trim();
+        const typeValu = Type.value.trim();
+        const priceValu = price.value.trim();
+        let newGames = JSON.parse(localStorage.getItem("newGames")) || [];
+
+        let newgameObj = {
+          gameValu: gameValu,
+          descValu: descValu,
+          typeValu: typeValu,
+          priceValu: priceValu,
+        };
+
+        newGames.push(newgameObj);
+        localStorage.setItem("newGames", JSON.stringify(newGames));
+        gamname.value = "";
+        desc.value = "";
+        Type.value = "";
+        price.value = "";
+
+        redirectToPage();
+      }
+
+      function redirectToPage() {
+        window.location.href = "../html/adminhome.html";
+      }
+    </script>
+   
+  </body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamingo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      crossorigin="anonymous"
+      media="all"
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+  </head>
+  <body>
+    <div class="col-nav">
+      <nav>
+        <ul>
+          <h2>
+            <i class="fa-solid fa-dice-d20" style="color: #ffffff"></i>
+            Gamingo
+          </h2>
+          <li>
+            <a href="adminhome.html" style="margin-top: 80px">
+              <i class="fa-solid fa-house" style="color: #fafcff"></i>
+              Home</a
+            >
+          </li>
+          <li>
+            <a href="">
+              <i class="fa-solid fa-chess-board" style="color: #fafcff"></i>
+              Games List</a
+            >
+          </li>
+          <li>
+            <a href="">
+              <i
+                class="fa-regular fa-rectangle-list"
+                style="color: #e3e7ee"
+              ></i>
+              Types</a
+            >
+          </li>
+
+          <li>
+            <a href="">
+              <i
+                class="fa-solid fa-arrow-right-from-bracket"
+                style="color: #f0f2f5"
+              ></i>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <div class="contain-update">
+        <form id="editForm">
+          <h2>Edit New Game</h2>
+          <div class="form-group">
+            <label for="gamename">Gamename:</label>
+            <input type="text" id="gamename" placeholder="Gamename" />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="desc">Description:</label>
+            <input type="text" id="descr" placeholder="Description" required />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="Type">Type:</label>
+            <input type="text" id="type" placeholder="Type" required />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="price">price:</label>
+            <input type="number" id="pricee" placeholder="price" required />
+          </div>
+          <br />
+          <button type="submit" onclick="editgame(this)">Update</button>
+        </form>
+        <a onclick="closeUpdate()">X</a>
+      </div>
+      <div class="contain-search">
+        <input type="text" placeholder="Search by Game is Name" id="search" />
+        <i
+          onclick="searchByName()"
+          class="fa-solid fa-magnifying-glass"
+          style="color: #ffffff"
+        ></i>
+      </div>
+
+      <div class="charts">
+        <div class="contain-cardcharts">
+          <p>Users Numbers: <span id="usercount"></span></p>
+        </div>
+        <div class="contain-cardcharts">
+          <p>Games Numbers :<span id="gamescount"></span></p>
+        </div>
+        <div class="contain-cardcharts">
+          <p>Special Orders: <span id="specialcount"></span></p>
+        </div>
+      </div>
+
+      <div class="contain-gameslist">
+        <div class="heading">
+          <div class="left"><h2>Games List</h2></div>
+          <div class="right">
+            <!-- <a id="show" onclick="showForm()"> -->
+            <a id="show" href="../html/addnewgame.html">
+              <i class="fa-solid fa-file-circle-plus" style="color: #ffffff"></i
+            ></a>
+            | <a onclick="deleteAll()"> Remove All</a>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th>description</th>
+              <th>type</th>
+              <th>price</th>
+              <th>Opera</th>
+              <th>tions</th>
+            </tr>
+          </thead>
+          <tbody id="contain-gamesdata"></tbody>
+        </table>
+      </div>
+      <!-- footer -->
+      <div class="margin"></div>
+
+      <footer>
+        <div class="rowone">
+          <div class="col">
+            <h4>Help Us Improve</h4>
+          </div>
+          <div class="col">
+            <h4>Help Us Improve</h4>
+          </div>
+          <div class="col">
+            <h4>Help Us Improve</h4>
+          </div>
+          <div class="col">
+            <h4>Help Us Improve</h4>
+          </div>
+        </div>
+        <div class="rowtwo">
+          <img src="../images/3-removebg-preview.png" alt="" />
+        </div>
+        <div class="rowthree">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-nintendo-switch"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M9.34 8.005c0-4.38.01-7.972.023-7.982C9.373.01 10.036 0 10.831 0c1.153 0 1.51.01 1.743.05 1.73.298 3.045 1.6 3.373 3.326.046.242.053.809.053 4.61 0 4.06.005 4.537-.123 4.976-.022.076-.048.15-.08.242a4.136 4.136 0 0 1-3.426 2.767c-.317.033-2.889.046-2.978.013-.05-.02-.053-.752-.053-7.979Zm4.675.269a1.621 1.621 0 0 0-1.113-1.034 1.609 1.609 0 0 0-1.938 1.073 1.9 1.9 0 0 0-.014.935 1.632 1.632 0 0 0 1.952 1.107c.51-.136.908-.504 1.11-1.028.11-.285.113-.742.003-1.053ZM3.71 3.317c-.208.04-.526.199-.695.348-.348.301-.52.729-.494 1.232.013.262.03.332.136.544.155.321.39.556.712.715.222.11.278.123.567.133.261.01.354 0 .53-.06.719-.242 1.153-.94 1.03-1.656-.142-.852-.95-1.422-1.786-1.256Z"
+            />
+            <path
+              d="M3.425.053a4.136 4.136 0 0 0-3.28 3.015C0 3.628-.01 3.956.005 8.3c.01 3.99.014 4.082.08 4.39.368 1.66 1.548 2.844 3.224 3.235.22.05.497.06 2.29.07 1.856.012 2.048.009 2.097-.04.05-.05.053-.69.053-7.94 0-5.374-.01-7.906-.033-7.952-.033-.06-.09-.063-2.03-.06-1.578.004-2.052.014-2.26.05Zm3 14.665-1.35-.016c-1.242-.013-1.375-.02-1.623-.083a2.81 2.81 0 0 1-2.08-2.167c-.074-.335-.074-8.579-.004-8.907a2.845 2.845 0 0 1 1.716-2.05c.438-.176.64-.196 2.058-.2l1.282-.003v13.426Z"
+            />
+          </svg>
+        </div>
+        <div class="row">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+            cupiditate reprehenderit provident dolorum deleniti illo? Et
+            accusamus nihil reprehenderit eaque expedita!
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
+            maxime iste dolor &copy; saved for rawan
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="../js/js.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        getUsers();
+        getGames();
+      });
+
+      function getUsers() {
+        const text = document.getElementById("usercount");
+        let userCount = JSON.parse(localStorage.getItem("gamingoUsers")) || [];
+        console.log(userCount.length);
+        text.innerHTML = userCount.length;
+      }
+
+      function showForm() {
+        console.log("alooo");
+        const formGame = document.querySelector(".popup-overlay-game");
+        formGame.classList.add("show");
+      }
+      let addButton = document.getElementById("show");
+      addButton.addEventListener("click", show);
+      function addGame() {
+        const gamname = document.getElementById("Gamename");
+        const desc = document.getElementById("desc");
+        const Type = document.getElementById("Type");
+        const price = document.getElementById("price");
+        let gameValu = gamname.value.trim();
+        let descValu = desc.value.trim();
+        let typeValu = Type.value.trim();
+        let priceValu = price.value.trim();
+        let newGames = JSON.parse(localStorage.getItem("newGames")) || [];
+
+        let newgameObj = {
+          gameValu: gameValu,
+          descValu: descValu,
+          typeValu: typeValu,
+          priceValu: priceValu,
+        };
+
+        newGames.push(newgameObj);
+        localStorage.setItem("newGames", JSON.stringify(newGames));
+        gameValu = "";
+        descValu = "";
+        typeValu = "";
+        priceValu = "";
+      }
+
+      getAllGames();
+      function getAllGames() {
+        let gameDataTxt = document.getElementById("contain-gamesdata");
+        let gamesData = JSON.parse(localStorage.getItem("newGames")) || [];
+
+        gamesData.forEach((element) => {
+          let tr = document.createElement("tr"); // Create a new <tr> element
+          tr.innerHTML = `
+            <td>
+              <img src="../images/1.jpeg" alt="" />
+            </td>
+            <td>
+              ${element.gameValu} <!-- Fix: Use the correct property name -->
+            </td>
+            <td>
+              ${element.descValu} <!-- Fix: Use the correct property name -->
+            </td>
+            <td>
+              ${element.typeValu} <!-- Fix: Use the correct property name -->
+            </td>
+            <td>
+              ${element.priceValu} <!-- Fix: Use the correct property name -->
+            </td>
+            <td>
+              <a onclick="delgame(this)"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>
+            </td>
+            <td>
+              <a onclick="openEdit()"><i class="fa-solid fa-wrench" style="color: #eff1f6;"></i></a>
+            </td>
+          `;
+
+          gameDataTxt.appendChild(tr);
+        });
+      }
+
+      // get gamescount
+      function getGames() {
+        const text = document.getElementById("gamescount");
+        let gamesCount = JSON.parse(localStorage.getItem("newGames")) || [];
+        console.log(gamesCount.length);
+        text.innerHTML = gamesCount.length;
+      }
+      // delete by id
+
+      function delgame(element) {
+        var row = element.parentNode.parentNode;
+        var rowIndex = row.rowIndex;
+        row.parentNode.removeChild(row);
+        var gamesData = JSON.parse(localStorage.getItem("newGames")) || [];
+        gamesData.splice(rowIndex - 1, 1);
+        localStorage.setItem("newGames", JSON.stringify(gamesData));
+        getGames();
+      }
+
+      // search by game name
+      function searchByName() {
+        let textsearch = document
+          .getElementById("search")
+          .value.trim()
+          .toLowerCase();
+        console.log(textsearch);
+        let tableRows = document.querySelectorAll("#contain-gamesdata tr");
+        for (let i = 1; i < tableRows.length; i++) {
+          let row = tableRows[i];
+          let gameName = row.cells[1].textContent.toLowerCase();
+          if (gameName.includes(textsearch)) {
+            console.log("found");
+            row.style.display = "block";
+          } else {
+            row.style.display = "none";
+          }
+        }
+      }
+
+      //open popup update
+      function openEdit() {
+        let popupwindow = document.querySelector(".contain-update");
+        popupwindow.classList.add("active");
+      }
+      function closeUpdate() {
+        let popupwindow = document.querySelector(".contain-update");
+        popupwindow.classList.remove("active");
+      }
+
+      //update function
+      function editgame(id) {
+         // Get the input values
+         const gamename = document.getElementById("gamename").value;
+         const descr = document.getElementById("descr").value;
+         const type = document.getElementById("type").value;
+         const pricee = document.getElementById("pricee").value;
+ 
+         // Perform the update operation
+         const gamesData = JSON.parse(localStorage.getItem("newGames")) || [];
+         const gameId = form.dataset.id;
+         const gameIndex = gamesData.findIndex((game) => game.id === gameId);
+ 
+         if (gameIndex !== -1) {
+           // Update the game object with the new values
+           gamesData[gameIndex].gamename = gamename;
+           gamesData[gameIndex].descr = descr;
+           gamesData[gameIndex].type = type;
+           gamesData[gameIndex].pricee = pricee;
+ 
+           // Save the updated data back to localStorage
+           localStorage.setItem("newGames", JSON.stringify(gamesData));
+ 
+           // Reload the page to reflect the changes
+           location.reload();
+         }
+      }
+    </script>
+  </body>
+</html>
